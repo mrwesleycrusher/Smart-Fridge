@@ -32,8 +32,13 @@ Must be run for each instance of LCD struct
 void fridge_init(fridgeDisplay* p);
 
 /************************************
-Displays string that is passsed
+Displays string that is passed
 Uses default formatting
 *************************************/
 void fridge_display(fridgeDisplay* p, char* str);
+
+/************************************
+Clears LCD
+*************************************/
+void fridge_clear(fridgeDisplay* p);
 #endif
