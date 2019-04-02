@@ -1,42 +1,32 @@
-#include <wiringPi.h>          
-#include <lcd.h>               
- 
-//USE WIRINGPI PIN NUMBERS
-#define LCD_RS  25               //Register select pin
-#define LCD_E   24               //Enable Pin
-#define LCD_D4  23               //Data pin 4
-#define LCD_D5  22               //Data pin 5
-#define LCD_D6  21               //Data pin 6
-#define LCD_D7  14               //Data pin 7
+#include "LCD.h"
+
 #define LCDBroke "uwu *is broken*"
- 
-typedef struct fridgeDisplay{
-    // char[32] currentText;
-    int lcd;
-} fridgeDisplay;
 
-// Initializes LCD
-void init(fridgeDisplay* p){
+/************************************
+Initializes LCD
+Must be run for each instance of LCD struct
+*************************************/
+void fridge_init(fridgeDisplay* p){
     // p.currentText = malloc(sizeof(char)*32);
+    //p = malloc(sizeof(fridgeDisplay));
     wiringPiSetup();        
-    p.lcd = lcdInit (2, 16, 4, LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7, 0, 0, 0, 0);
-    lcdClear(p.lcd);
+    p->lcd = lcdInit (2, 16, 4, LCD_RS, LCD_E, LCD_D4, LCD_D5, LCD_D6, LCD_D7, 0, 0, 0, 0);
+    lcdClear(p->lcd);
 }
 
-//***************************
-//display
-//Struct: fridgeDisplay
-//Input: struct fridgeDisplay *p
-//
-void display(fridgeDisplay *p, char[] string){
-    lcdputs(p.lcd,string);
+/************************************
+Displays string that is passsed
+Uses default formatting
+*************************************/
+void fridge_display(fridgeDisplay* p, char* str){
+    lcdPuts(p->lcd,str);
 }
 
-
-
-//uwu
-static void uwuTFOutOfIt(){
-    lcdClear(lcd);
-    lcdPuts(lcd, LCDBroke);   
+/************************************
+UWU
+*************************************/
+static void uwuTFOutOfIt(fridgeDisplay* p){
+    lcdClear(p->lcd);
+    lcdPuts(p->lcd, LCDBroke);   
     exit(-1);
 }
