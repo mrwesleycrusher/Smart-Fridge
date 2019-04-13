@@ -15,17 +15,24 @@ void fridge_init(fridgeDisplay* p){
 }
 
 /************************************
-Displays string that is passsed
-Uses default formatting
+Displays string that is passed
+Uses default formatting for now
 *************************************/
 void fridge_display(fridgeDisplay* p, char* str){
     lcdPuts(p->lcd,str);
 }
 
 /************************************
+Clears LCD
+*************************************/
+void fridge_clear(fridgeDisplay* p){
+    lcdClear(p->lcd);
+}
+
+/************************************
 UWU
 *************************************/
-static void uwuTFOutOfIt(fridgeDisplay* p){
+void uwuTFOutOfIt(fridgeDisplay* p){
     lcdClear(p->lcd);
     lcdPuts(p->lcd, LCDBroke);   
     exit(-1);

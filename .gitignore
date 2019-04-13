@@ -102,3 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#Tyler environment files
+run.sh
+prepare_remote_debug.sh
+.vscode
+
