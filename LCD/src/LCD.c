@@ -32,7 +32,7 @@ void fridge_clear(fridgeDisplay* p){
 /************************************
 UWU
 *************************************/
-void uwuTFOutOfIt(fridgeDisplay* p){
+static void uwuTFOutOfIt(fridgeDisplay* p){
     lcdClear(p->lcd);
     lcdPuts(p->lcd, LCDBroke);   
     exit(-1);
