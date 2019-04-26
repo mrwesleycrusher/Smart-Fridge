@@ -54,6 +54,9 @@ int main(){
     }
     average /= i;
     printf("\n32 Chars take %f seconds",average);
+
+    fridge_clear(disp);
+    fridge_display(disp,"god is dead");
     return 0;
 
 }
