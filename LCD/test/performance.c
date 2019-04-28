@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include "LCD.h"
+#include "scanInput.h"
 
 int main(){
     fridgeDisplay p;
@@ -57,6 +58,11 @@ int main(){
 
     fridge_clear(disp);
     fridge_display(disp,"god is dead");
+    
+    BarcodeScanner scanny;
+    BarcodeScanner_init(scanny);
+    scanForCode(scanny); 
+    
     return 0;
 
 }
