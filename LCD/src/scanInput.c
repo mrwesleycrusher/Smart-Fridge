@@ -2,7 +2,7 @@
 
 
 int scanForCode(char* code){
-    printf("Waiting for Code\n");
+    printf("\nWaiting for Code\n");
     scanf("%s",code);
     printf("Code: %s received", code);
     return 0;

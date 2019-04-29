@@ -59,9 +59,9 @@ int main(){
     fridge_clear(disp);
     fridge_display(disp,"god is dead");
     
-    BarcodeScanner scanny;
-    BarcodeScanner_init(scanny);
-    scanForCode(scanny); 
+    char code[100];
+    scanForCode(code); 
+    printf("\nReceived: %s\n",code);
     
     return 0;
 
