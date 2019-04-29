@@ -15,10 +15,11 @@ def send_to_email(reciever_email, message):
                 server.sendmail(sender_email,reciever_email,message)
 
 def get_the_message(foods):
-        message = "Hello User-Senpai!\nI have created you a grocery list!\n*Noitices your bulge (in your wallet)* uwu what's that?\n\n"
+        message = "Hello Master! Here is your list!\n\n"
         count = 1
         for x in foods:
                 message+=str(count)
+                message+=". "
                 message+=x.get_count()
                 message+=" "
                 message+=x.get_name()
