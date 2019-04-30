@@ -28,7 +28,7 @@ class NetworkDriver:
             #accept incoming connection, since we don't support multiple 
             #clients at once, just assign sock to the connection
             self.sock, self.clientIP = self.sock.accept()
-            self.mostRecentCommand = None
+            self.most_recent_command = None
             self.killthread = False
 
 
