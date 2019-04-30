@@ -28,7 +28,7 @@ class NetworkDriver:
             #accept incoming connection, since we don't support multiple 
             #clients at once, just assign sock to the connection
             self.sock, self.clientIP = self.sock.accept()
-            self.mostRecentCommand = None
+            self.most_recent_command = None
             self.killthread = False
 
 
@@ -40,14 +40,13 @@ class NetworkDriver:
             #check for 'ack'
             ack = None 
             while ack != 'ack':
-                ack = socket.recieve(1024).decode()
-
+                ack = socket.recieve(3).decode()
             #now we need to actually send the data over the socket
             self.sock.sendall(information.encode())
             ack = None
             #now of course we wait for ack again
             while ack != 'ack':
-                ack = socket.recieve(1024).decode()
+                ack = socket.recieve(3).decode()
         
 
     #recieves an unencoded string from the server
