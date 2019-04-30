@@ -18,6 +18,8 @@ TOBJ := $(TOBJ:$(TESTDIR)/=$(OBJDIR))
 CFLAGS = -I$(IDIR) -Wall -g
 LDFLAGS = -lwiringPi -lwiringPiDev
 
+all: $(OBJ)
+
 $(OBJDIR)/%.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS) $(LDFLAGS)
 
