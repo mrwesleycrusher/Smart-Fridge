@@ -28,7 +28,7 @@ def main():
     global buttonState
     
     while(me):
-        signal.alacrm(600)
+        signal.alarm(600)
         network.send(scanner.scanForCode())
         
         if buttonState == 1:
