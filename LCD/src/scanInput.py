@@ -31,8 +31,8 @@ class scannerInput():
     ###################################
     #           getAddState
     #Returns if button is in add state
-    #True: button is in add state
-    #False: button is in subtract state
+    #True(1): button is in add state
+    #False(0): button is in subtract state
     ###################################
     def getAddState(self):
         input_state = GPIO.input(18)
