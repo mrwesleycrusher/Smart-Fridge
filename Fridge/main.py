@@ -3,11 +3,14 @@ from LCD.scanInput import scannerInput, getAddState
 from networkingBackend.NetworkDriver import NetworkDriver
 import threading
 import signal
+from RPi import GPIO
 
 buttonState=1
 
 def pollButton():
-    global buttonState = getAddState()
+    GPIO.setmode(GPIO.BOARD)
+    GPIO.setup(18, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    buttonState = GPIO.input(18)
 
 def timeout_handler(signum, frame):
     exit()
