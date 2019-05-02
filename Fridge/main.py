@@ -19,9 +19,9 @@ def timeout_handler(signum, frame):
     exit()
 
 def main():
-    network = NetworkDriver('pi')
     display = LCDDisplay()
     scanner = scannerInput()
+    network = NetworkDriver('pi')
     me = True
     buttonpoller = threading.Thread(target=pollButton)
     buttonpoller.start()

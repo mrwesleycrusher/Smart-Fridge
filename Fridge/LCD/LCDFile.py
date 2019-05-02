@@ -10,7 +10,7 @@ class LCDDisplay():
     
     def __init__(self):
         pi = pigpio.pi()
-        self.lcd = CharLCD(pi,pin_rs=25, pin_rw=8,pin_e=24, pins_data=[23, 22, 21, 14], cols=16, rows=2, charmap='A02', auto_linebreaks=True)
+        self.lcd = CharLCD(pi,pin_rs=25, pin_contrast=8,pin_e=24, pins_data=[23, 22, 21, 14], cols=16, rows=2, charmap='A02', auto_linebreaks=True)
         self.lcd.write_string("Welcome!")
     
 #######################################
