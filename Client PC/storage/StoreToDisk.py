@@ -5,4 +5,5 @@ def save(json_data):
 
 def load():
     with open('grocery_list_backup.json', 'r') as infile:
-        return json.loads(infile)
+        return json.loads(infile.read())
+
