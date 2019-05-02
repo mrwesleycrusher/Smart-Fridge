@@ -10,7 +10,7 @@ grocery_list
 def timeout_handler(signum, frame):
     global grocery_list
     send_to_email("Wow@wow.com", get_the_message(grocery_list))
-    save(global grocery_list)
+    save(grocery_list)
     exit()
 
 def main():
