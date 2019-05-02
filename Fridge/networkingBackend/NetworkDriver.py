@@ -52,9 +52,9 @@ class NetworkDriver:
     #receives an unencoded string from the server
     def receive(self):
         with self.lock:
-            transferSize = int(self.sock.recv(1024).decode())
+            transferSize = self.sock.recv(1024).decode()
             self.sock.sendall('ack'.encode())
-            transfer = int(self.sock.recv(transferSize).decode())
+            transfer = self.sock.recv(transferSize).decode()
             self.sock.sendall('ack'.encode())
             return transfer
     #@Tyler changed socket.sendall -> self.sock.sendall
