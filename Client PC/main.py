@@ -21,7 +21,7 @@ def main():
     
     while(me):
         signal.alarm(600)
-        next_barcode = str(network.recieve())
+        next_barcode = network.recieve()
         switch_state = network.recieve()
 
         if grocery_list[next_barcode] is not None:
