@@ -5,7 +5,7 @@ from networkingBackend.NetworkDriver import NetworkDriver
 import json
 import signal
 
-grocery_list
+grocery_list = {}
 
 def timeout_handler(signum, frame):
     global grocery_list
@@ -15,11 +15,11 @@ def timeout_handler(signum, frame):
 
 def main():
     network = NetworkDriver('laptop')
-    continue = True
+    me = True
     global grocery_list 
     grocery_list= load()
     
-    while(continue):
+    while(me):
         signal.alarm(600)
         next_barcode = network.recieve()
         switch_state = network.recieve()
