@@ -19,11 +19,11 @@ def main():
     network = NetworkDriver('pi')
     display = LCDDisplay()
     scanner = scannerInput()
-    continue = True
+    me = True
     buttonpoller = threading.Thread(target=pollButton)
     buttonpoller.start()
     
-    while(continue):
+    while(me):
         signal.alacrm(600)
         network.send(scanner.scanForCode())
         if global buttonState is 1:
