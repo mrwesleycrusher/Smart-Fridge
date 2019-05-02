@@ -21,14 +21,16 @@ def main():
     
     while(me):
         signal.alarm(600)
-        next_barcode = network.recieve()
+        next_barcode = str(network.recieve())
         switch_state = network.recieve()
 
         if grocery_list[next_barcode] is not None:
                 if switch_state == "add":
                     grocery_list[next_barcode] = grocery_list[next_barcode] + Foodstuff(next_barcode)
                 else:
-                    grocery_list[next_barcode] = Foodstuff(next_barcode)
+                    grocery_list[next_barcode] = grocery_list[next_barcode] - Foodstuff(next_barcode)
+        else:
+            grocery_list[next_barcode] = Foodstuff(next_barcode)
 
         network.send(grocery_list[next_barcode].get_name())
 
