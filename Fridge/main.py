@@ -26,7 +26,7 @@ def main():
     while(me):
         signal.alacrm(600)
         network.send(scanner.scanForCode())
-        if global buttonState is 1:
+        if global buttonState == 1:
             network.send("add")
         else:
             network.send("something else")
