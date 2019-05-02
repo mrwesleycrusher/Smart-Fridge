@@ -10,10 +10,10 @@ buttonState=1
 def pollButton():
     pi = pigpio.pi()
     global buttonState
-    pi.set_mode(18, pigpio.INPUT)
-    pi.set_noise_filter(18, 10000, 500000)
-    pi.set_pull_up_down(18, pigpio.PUD_UP)
-    buttonState = pi.read(18)
+    pi.set_mode(5, pigpio.INPUT)
+    pi.set_noise_filter(5, 10000, 500000)
+    pi.set_pull_up_down(5, pigpio.PUD_UP)
+    buttonState = pi.read(5)
 
 def timeout_handler(signum, frame):
     exit()
