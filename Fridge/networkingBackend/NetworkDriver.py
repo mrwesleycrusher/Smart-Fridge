@@ -1,6 +1,6 @@
 #this class runs on the host computer to connect it to the
 #raspi zero to abstract the biolerplate of connecting, sending
-#commands, and recieving images from the pi camera
+#commands, and receiving images from the pi camera
 import socket
 import subprocess
 import re, threading
@@ -40,24 +40,24 @@ class NetworkDriver:
             #check for 'ack'
             ack = None 
             while ack != 'ack':
-                ack = socket.recieve(3).decode()
+                ack = self.sock.recv(1024).decode()
             #now we need to actually send the data over the socket
             self.sock.sendall(information.encode())
             ack = None
             #now of course we wait for ack again
             while ack != 'ack':
-                ack = socket.recieve(3).decode()
-        
+                ack = self.sock.recv(1024).decode()
+        #@Tyler changed =>>> (line 43 and 49) socket.recieve(3) -> self.sock.recv(1024)
 
-    #recieves an unencoded string from the server
-    def recieve(self):
+    #receives an unencoded string from the server
+    def receive(self):
         with self.lock:
             transferSize = int(self.sock.recv(1024).decode())
-            self.socket.sendall('ack'.encode())
+            self.sock.sendall('ack'.encode())
             transfer = int(self.sock.recv(transferSize).decode())
-            self.socket.sendall('ack'.encode())
+            self.sock.sendall('ack'.encode())
             return transfer
-            
+    #@Tyler changed socket.sendall -> self.sock.sendall
     
     def __del__(self):
         with self.lock:
