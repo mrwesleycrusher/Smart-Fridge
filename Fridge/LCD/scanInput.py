@@ -10,7 +10,7 @@ import time
 class scannerInput():
 
     def __init__(self):
-        print "Scanner up"
+        print("Scanner up")
 
     ###################################
     #           scanForCode
@@ -20,11 +20,11 @@ class scannerInput():
     ###################################
     def scanForCode(self):
         try:
-            code = raw_input("Enter code: ")
+            code = input("Enter code: ")
             return code;    
 
         except KeyboardInterrupt:
-            print "Failed Read"
+            print("Failed Read")
 
     ###################################
     #           getAddState
