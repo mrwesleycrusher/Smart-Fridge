@@ -2,7 +2,8 @@ import smtplib, ssl
 
 def send_to_email(reciever_email, message):
         port = 465  # For SSL
-        password = input("Type your password and press enter: ")
+        #password = input("Type your password and press enter: ")
+        password = "nickwestylermax"
 
             # Create a secure SSL context
         context = ssl.create_default_context()
