@@ -38,7 +38,7 @@ def main():
         else:
             network.send("something else")
 
-        display.display(network.recieve())
+        display.display(network.receive())
 
 if __name__=="__main__":
     main()
