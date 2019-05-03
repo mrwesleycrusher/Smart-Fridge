@@ -54,7 +54,7 @@ class NetworkDriver:
         with self.lock:
             transferSize = self.sock.recv(1024).decode()
             self.sock.sendall('ack'.encode())
-            transfer = self.sock.recv(transferSize).decode()
+            transfer = self.sock.recv(int(transferSize)).decode()
             self.sock.sendall('ack'.encode())
             return transfer
     #@Tyler changed socket.sendall -> self.sock.sendall

@@ -29,7 +29,9 @@ def main():
     
     while(me):
         signal.alarm(600)
-        network.send(scanner.scanForCode())
+        bcode = scanner.scanForCode()
+        #print("Bcode: " + bcode + str(type(bcode)))
+        network.send(bcode)
         
         if buttonState == 1:
             network.send("add")
