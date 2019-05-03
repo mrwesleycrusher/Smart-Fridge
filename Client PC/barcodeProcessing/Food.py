@@ -43,6 +43,8 @@ class Foodstuff:
     #TODO: Replace Assertions with NegativeErrors
     #TODO: Consider moving away from overloading, as per Fluff's advice
 
+    # global key = '1C80BFC893597FD1915C0611541EEBA1'
+
     # == and != match barcodes
     def __eq__(self, other):
         return self.code == other.code
@@ -88,7 +90,7 @@ class Foodstuff:
     def lookup(barcode):
         try:
             response = requests.get('https://api.upcdatabase.org/product/' + barcode +
-                                    '/7B41811D2F3D87C40DAA9E2D64B1BA34')
+                                    '/' + '1C80BFC893597FD1915C0611541EEBA1')
             status = response.status_code
             if status == 200:
                 # Match title field in list and return corresponding name
@@ -99,7 +101,7 @@ class Foodstuff:
             else:
                 raise NoSuchCode
         except BadLookup as err:
-            print('Could not connect to UPC Database with key 7B41811D2F3D87C40DAA9E2D64B1BA34')
+            print('Could not connect to UPC Database with key ' + '1C80BFC893597FD1915C0611541EEBA1')
             return 'BadLookup'
         except NoSuchCode as err:
             print('Could not find product for code: ' + barcode)
@@ -112,10 +114,10 @@ class Foodstuff:
         self.quantity = num
 
     # Destructor
-    def __del__(self):
-        del self.code
-        del self.name
-        del self.quantity
+    # def __del__(self):
+    #     del self.code
+    #     del self.name
+    #     del self.quantity
 
     # Accessors
     def get_code(self):
