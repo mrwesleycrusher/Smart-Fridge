@@ -11,7 +11,7 @@ def timeout_handler(signum, frame):
     global grocery_list
     print("Sending Email")
     send_to_email("monzohno@gmail.com", get_the_message(grocery_list))
-    pickleSave(grocery_list)
+    save(grocery_list)
     exit()
 
 def main():
