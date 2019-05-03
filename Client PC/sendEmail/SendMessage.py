@@ -16,11 +16,11 @@ def send_to_email(reciever_email, message):
 def get_the_message(foods):
         message = "Hello There! Here is your list!\n\n"
         count = 1
-        for x in foods:
+        for key, value in foods.items():
                 message+=str(count)
                 message+=". "
-                message+=x.get_count()
+                message+=str(value.get_num())
                 message+=" "
-                message+=x.get_name()
+                message+=str(value.get_name())
                 message+="s\n"             
         return message
