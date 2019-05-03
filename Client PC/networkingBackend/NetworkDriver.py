@@ -40,17 +40,17 @@ class NetworkDriver:
             #check for 'ack'
             ack = None 
             while ack != 'ack':
-                ack = self.sock.recieve(1024).decode()
+                ack = self.sock.recv(1024).decode()
             #now we need to actually send the data over the socket
             self.sock.sendall(information.encode())
             ack = None
             #now of course we wait for ack again
             while ack != 'ack':
-                ack = self.sock.recieve(1024).decode()
+                ack = self.sock.recv(1024).decode()
         
 
     #recieves an unencoded string from the server
-    def recieve(self):
+    def receive(self):
         with self.lock:
             transferSize = self.sock.recv(1024).decode()
             self.sock.sendall('ack'.encode())
