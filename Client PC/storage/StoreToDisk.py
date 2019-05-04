@@ -10,17 +10,21 @@ def save(json_data):
 
 def load():
         with open('grocery_list_backup.json', 'r') as infile:
+                return_list = {}
                 s = json.loads(infile.read())
                 
-                # if s:            
-                #         print(s[0])
-                #         temp = Foodstuff(s[0]['code'],int(s[0]['quantity']))
-                #         return_list = {s[0]['code']:temp} 
-                #         print(return_list)
-                #         return return_list
-                # else:
-                #         return s
-                return s
+                if s:
+                        # print(s)            
+                        for x in s:
+                                # print(x)
+                                temp = Foodstuff(x['code'],int(x['quantity']))
+                                return_list.update({x['code']:temp}) 
+                                # print("LIST: ")
+                                # print(return_list)
+                        print("List Loaded")        
+                        return return_list
+                else:
+                        return s
 
 # def pickleSave(data):
 #         with open('grocery_list_backup.json', 'wb') as outfile:
