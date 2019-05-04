@@ -17,7 +17,7 @@ def timeout_handler():
     save(grocery_list)
 
 
-@timeout_decorator.timeout(10)
+@timeout_decorator.timeout(10, timeout_exception=TimeoutError)
 def receive_data(network):
     global grocery_list
     next_barcode = network.receive()
