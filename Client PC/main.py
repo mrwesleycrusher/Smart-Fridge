@@ -17,8 +17,8 @@ def timeout_handler():
     save(grocery_list)
 
 
-@timeout_decorator.timeout(60)
-def receive_data():
+@timeout_decorator.timeout(10)
+def receive_data(network):
     global grocery_list
     next_barcode = network.receive()
     switch_state = network.receive()
@@ -41,7 +41,7 @@ def main():
 
     while (True):
         try:
-            receive_data()
+            receive_data(network)
         except TimeoutError:
             timeout_handler()
 
