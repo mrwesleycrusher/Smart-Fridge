@@ -11,6 +11,7 @@ def timeout_handler(signum, frame):
     global grocery_list
     print("Sending Email")
     send_to_email("monzohno@gmail.com", get_the_message(grocery_list))
+    #print(grocery_list)
     save(grocery_list)
     exit()
 
@@ -20,10 +21,10 @@ def main():
     me = True
     global grocery_list 
     grocery_list= load()
-    print(grocery_list)
+    # print(grocery_list)
     
     while(me):
-        signal.alarm(20)
+        signal.alarm(10)
         next_barcode = network.receive()
         switch_state = network.receive()
 
