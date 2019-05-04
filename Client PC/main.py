@@ -16,11 +16,12 @@ def timeout_handler(signum, frame):
     exit()
 
 def main():
+    global grocery_list 
+    grocery_list= load()
     network = NetworkDriver('laptop')
     signal.signal(signal.SIGALRM, timeout_handler)
     me = True
-    global grocery_list 
-    grocery_list= load()
+    
     # print(grocery_list)
     
     while(me):
