@@ -61,7 +61,7 @@ class Foodstuff:
     def __sub__(self, other):
         assert self == other
         assert self.quantity >= other.quantity
-        return Foodstuff(self.code, self.quantity + other.quantity)
+        return Foodstuff(self.code, self.quantity - other.quantity)
 
     def __iadd__(self, other):
         assert self == other
