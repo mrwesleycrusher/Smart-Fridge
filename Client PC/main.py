@@ -17,21 +17,26 @@ def timeout_handler():
     save(grocery_list)
 
 
-@timeout_decorator.timeout(10, timeout_exception=TimeoutError)
+
+
+@timeout_decorator.timeout(30, timeout_exception=TimeoutError)
 def receive_data(network):
     global grocery_list
     next_barcode = network.receive()
     switch_state = network.receive()
 
-    grocery_list.setdefault(next_barcode, Foodstuff(next_barcode, 0.0))  # should add the key if it is not found
+    food_temp = Foodstuff(next_barcode, 0.0)
+    if(food_temp.get_name != "NoSuchCode"):
+        grocery_list.setdefault(next_barcode, food_temp)  # should add the key if it is not found
 
-    if switch_state == "add":
-        grocery_list[next_barcode] = grocery_list[next_barcode] + Foodstuff(next_barcode)
+        if switch_state == "add":
+            grocery_list[next_barcode] = grocery_list[next_barcode] + Foodstuff(next_barcode)
+        else:
+            grocery_list[next_barcode] = grocery_list[next_barcode] - Foodstuff(next_barcode)
+
+        network.send(grocery_list[next_barcode].get_name())
     else:
-        grocery_list[next_barcode] = grocery_list[next_barcode] - Foodstuff(next_barcode)
-
-    network.send(grocery_list[next_barcode].get_name())
-
+        network.send("Scan Failed")
 
 def main():
     network = NetworkDriver('laptop')
