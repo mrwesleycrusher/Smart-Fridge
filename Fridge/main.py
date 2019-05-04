@@ -26,6 +26,7 @@ def main():
     buttonpoller = threading.Thread(target=pollButton)
     buttonpoller.start()
     global buttonState
+    framebuffer = ['Item Scanned','']
     
     while(me):
         signal.alarm(600)
@@ -38,8 +39,12 @@ def main():
         else:
             network.send("something else")
         thing = network.receive()
-        print("thing: " + thing)
-        display.display(thing)
+        # print("thing: " + thing)
+        display.clear()
+        display.display_buffer(framebuffer)
+        display.loop_string(thing, framebuffer, 1)
+        display.display("Waiting for Item")
+
 
 if __name__=="__main__":
     main()
