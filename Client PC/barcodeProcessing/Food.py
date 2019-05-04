@@ -86,8 +86,13 @@ class Foodstuff:
     #     newtext = text.strip('\"').strip('\:').strip('{}').split(',')
     #     return newtext
 
+    #Helper for removing whitespace from name
+    def remove_extra_chars(self):
+        self.name = self.name.strip(' \r\n\t\\r\\n\\t')
+    
+
     # API CALL CENTRAL
-    def lookup(barcode):
+    def lookup(self,barcode):
         try:
             response = requests.get('https://api.upcdatabase.org/product/' + barcode +
                                     '/' + '1C80BFC893597FD1915C0611541EEBA1')
@@ -110,7 +115,8 @@ class Foodstuff:
     # Constructor. Optional argument for initializing with several food items
     def __init__(self, barcode, num=1.0):
         self.code = barcode
-        self.name = Foodstuff.lookup(barcode)
+        self.name = self.lookup(barcode)
+        self.remove_extra_chars()
         self.quantity = num
 
     # Destructor

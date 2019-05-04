@@ -1,0 +1,5 @@
+Before we run the fridge script, you need to run:
+
+sudo pigpiod
+
+the pigpio daemon
