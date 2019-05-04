@@ -1,6 +1,6 @@
 from barcodeProcessing.Food import Foodstuff
 from sendEmail.SendMessage import send_to_email, get_the_message
-from storage.StoreToDisk import save, load, pickleSave
+from storage.StoreToDisk import save, load
 from networkingBackend.NetworkDriver import NetworkDriver
 import json
 import signal
@@ -20,9 +20,10 @@ def main():
     me = True
     global grocery_list 
     grocery_list= load()
+    print(grocery_list)
     
     while(me):
-        signal.alarm(10)
+        signal.alarm(20)
         next_barcode = network.receive()
         switch_state = network.receive()
 
