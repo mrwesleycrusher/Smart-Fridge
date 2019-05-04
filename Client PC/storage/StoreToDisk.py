@@ -3,10 +3,11 @@ import pickle
 from barcodeProcessing.Food import Foodstuff
 
 def save(json_data):
-    with open('grocery_list_backup.json', 'w') as outfile:
-        #print("Hecky you: " + [(value.__dict__ for key,value in json_data.items())])
-        json.dump(([value.__dict__ for key,value in json_data.items()]), outfile)
-        # json.dump(json_data, outfile)
+    if json_data:
+        with open('grocery_list_backup.json', 'w') as outfile:
+                #print("Hecky you: " + [(value.__dict__ for key,value in json_data.items())])
+                json.dump(([value.__dict__ for key,value in json_data.items()]), outfile)
+                # json.dump(json_data, outfile)
 
 def load():
         with open('grocery_list_backup.json', 'r') as infile:
