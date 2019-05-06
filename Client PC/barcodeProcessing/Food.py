@@ -97,12 +97,21 @@ class Foodstuff:
             response = requests.get('https://api.upcdatabase.org/product/' + barcode +
                                     '/' + '1C80BFC893597FD1915C0611541EEBA1')
             status = response.status_code
+            # Apparently some barcodes have leading zeroes
+            response1 = requests.get('https://api.upcdatabase.org/product/' + '0' + barcode +
+                                    '/' + '1C80BFC893597FD1915C0611541EEBA1')
+            status1 = response1.status_code
             if status == 200:
                 # Match title field in list and return corresponding name
                 response_name = re.search('\"title\"\:\".*?\"', response.text)
                 return response_name.group(0)[9:len(response_name.group())-1]
+            # BadLookup will occur for both, so only need to check one
             elif status == 403:
                 raise BadLookup
+            # Check leading 0 version
+            elif status1 == 200:
+                response_name = re.search('\"title\"\:\".*?\"', response1.text)
+                return response_name.group(0)[9:len(response_name.group())-1]
             else:
                 raise NoSuchCode
         except BadLookup as err:
