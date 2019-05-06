@@ -48,12 +48,12 @@ def main():
         bcode = scanner.scanForCode()
         #print("Bcode: " + bcode + str(type(bcode)))
         network.send(bcode)
-        print(buttonState)
+        # print(buttonState)
         if buttonState == 1:
-            print("add")
+            # print("add")
             network.send("add")
         else:
-            print("subtract")
+            # print("subtract")
             network.send("subtract")
         thing = network.receive()
         # print("thing: " + thing)
