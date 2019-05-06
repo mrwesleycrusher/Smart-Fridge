@@ -23,5 +23,6 @@ def get_the_message(foods):
                 message+=str(value.get_num())
                 message+=" "
                 message+=str(value.get_name())
-                message+="s\n"             
+                message+="s\n"
+                count+=1             
         return message
